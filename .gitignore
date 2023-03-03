@@ -37,7 +37,13 @@ bld/
 #wwwroot/
 
 # Visual Studio 2017 auto generated files
-Generated\ Files/
+Generated Files/
+
+# Visual Code directory
+.vscode/
+
+# something, not sure
+.idea/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
