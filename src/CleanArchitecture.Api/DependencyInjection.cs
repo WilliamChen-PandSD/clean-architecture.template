@@ -34,7 +34,7 @@ public static class DependencyInjection
             options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
 
             options.EnableAnnotations();
-            options.ExampleFilters();
+            //options.ExampleFilters();
         });
 
         return services;
