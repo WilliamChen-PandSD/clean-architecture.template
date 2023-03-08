@@ -4,6 +4,7 @@ using MapsterMapper;
 using MediatR;
 using CleanArchitecture.Application.Weather.Queries;
 using CleanArchitecture.Contracts.Weather;
+using ErrorOr;
 
 namespace CleanArchitecture.Api.Controllers;
 
@@ -30,7 +31,6 @@ public class WeatherController : ApiController
 
         return result.Match(
             weatherResult => Ok(_mapper.Map<WeatherResponse>(weatherResult)),
-            errors => Problem(errors)
-        );
+            errors => Problem(errors));
     }
 }

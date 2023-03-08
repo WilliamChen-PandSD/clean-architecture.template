@@ -1,6 +1,7 @@
 using FluentValidation.Results;
 using FluentAssertions;
 using CleanArchitecture.Application.Weather.Queries;
+using FluentAssertions.Execution;
 
 namespace CleanArchitecture.UnitTests.Validation;
 
@@ -24,12 +25,15 @@ public class ValidationTests
         var validateResult = WeatherQueryValidateModel(query);
 
         // Assert
-        validateResult.IsValid.Should().Be(isValid);
-        validateResult.Errors.Count.Should().Be(numberOfErrors);
-        if (numberOfErrors > 0)
+        using (new AssertionScope())
         {
-            var errors = string.Join(" ", validateResult.Errors.Select(error => error.ErrorMessage).ToList());
-            errors.Should().BeEquivalentTo(validationMessage);
+            validateResult.IsValid.Should().Be(isValid);
+            validateResult.Errors.Count.Should().Be(numberOfErrors);
+            if (numberOfErrors > 0)
+            {
+                var errors = string.Join(" ", validateResult.Errors.ConvertAll(error => error.ErrorMessage));
+                errors.Should().BeEquivalentTo(validationMessage);
+            }
         }
     }
 

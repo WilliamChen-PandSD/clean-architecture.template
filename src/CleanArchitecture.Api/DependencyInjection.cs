@@ -1,7 +1,7 @@
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using Swashbuckle.AspNetCore.Filters;
 using CleanArchitecture.Api.Common.Mapping;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace CleanArchitecture.Api;
 
